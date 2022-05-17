@@ -8,5 +8,6 @@ def tup(file):
             num = float(num)
             num = int(num)
             cur.append(num)
-        ret.append(tuple(cur))
+        if cur not in ret: ret.append(tuple(cur))
+    if ret == []: ret = [(0, 0, 0)]
     return ret
