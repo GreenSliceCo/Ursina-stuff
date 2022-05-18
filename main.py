@@ -16,9 +16,15 @@ class Voxel(Entity):
         )
         array.append((self.position[0], self.position[1], self.position[2]))
     def input(self, key):
-        global array
+        global array,HoverMode
         if self.hovered:
-            if key == 'left mouse down':
+            if HoverMode:
+                hit_info = raycast(camera.world_position, camera.forward, distance=10)
+                if hit_info.hit:
+                    Voxel(position=hit_info.entity.position + hit_info.normal)
+            if key == 'h':
+                HoverMode = not HoverMode
+            if key == 'left mouse down' and not HoverMode:
                 Voxel(position=self.position + mouse.normal)
             if key == 'right mouse down':
                 array = [el for el in array if el != self.position]
@@ -27,6 +33,7 @@ class Voxel(Entity):
 print("Loading world...")
 array = tup(open('locations.txt', 'r'))
 app = Ursina()
+HoverMode = False
 for i in range(len(array)):
     Voxel(position = array[i])
 player = FirstPersonController()
