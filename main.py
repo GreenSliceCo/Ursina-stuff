@@ -1,17 +1,15 @@
-import timeit
-
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 from reader import tup
 class Voxel(Button):
-    def __init__(self, position=(0,0,0)):
-        global array,terrain
+    def __init__(self, position=(0,0,0), texture = 'oak.jpg'):
+        global array,textures,terrain
         super().__init__(
             parent = terrain,
-            position = position,
+            position = (int(position[0]), int(position[1]), int(position[2])),
             model = 'cube',
             origin_y = .5,
-            texture = 'oak.jpg',
+            texture = texture,
             color = color.color(0, 0, random.uniform(.9, 1.0)),
             highlight_color = color.white,
         )
@@ -30,8 +28,6 @@ class Voxel(Button):
             if key == 'right mouse down':
                 array = [el for el in array if el != self.position]
                 destroy(self)
-
-print("Loading world...")
 array = tup(open('locations.txt', 'r'))
 app = Ursina()
 HoverMode = False
@@ -42,16 +38,12 @@ terrain.collider = 'mesh'
 player = FirstPersonController()
 WORLD = 20
 def input(key):
+    global userTex
     if key == 'u':
         fil = open('locations.txt', 'w')
         for el in array:
             fil.write(str(el) + "\n")
-# def input(key):
-#     if key == 'left mouse down':
-#         hit_info = raycast(camera.world_position, camera.forward, distance=10)
-#         if hit_info.hit:
-#             Voxel(position=hit_info.entity.position + hit_info.normal)
-Entity(model = 'sphere', color = color.azure, double_sided = True, scale = 150)
+sky = Entity(model = 'sphere', color = color.azure, double_sided = True, scale = 150)
 player = FirstPersonController()
 player.gravity = 1
 app.run()
