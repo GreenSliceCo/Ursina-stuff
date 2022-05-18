@@ -19,3 +19,5 @@ Update log: 5/17, 2022: Added 'Hover Mode.' Press 'h' to activate; lets you spam
 Update log: 5/18, 2022: Added mesh terrain for higher framrates at close to 1,000 blocks
 
 Update log: 5/18, 2022: Added code efficency for framerates of ~20 at more than 3,000 blocks
+
+Update log: 5/18, 2022: Troll mode
