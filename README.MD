@@ -15,3 +15,5 @@ This should set you up. More bugfixes coming soon!
 Update log: 5/17, 2022: Added more efficient reading of the data
 
 Update log: 5/17, 2022: Added 'Hover Mode.' Press 'h' to activate; lets you spam build things.
+
+Update log: 5/18, 2022: Added mesh terrain for higher framrates at close to 1,000 blocks
