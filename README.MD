@@ -21,3 +21,5 @@ Update log: 5/18, 2022: Added mesh terrain for higher framrates at close to 1,00
 Update log: 5/18, 2022: Added code efficency for framerates of ~20 at more than 3,000 blocks
 
 Update log: 5/18, 2022: Troll mode
+
+Update log: 5/20, 2022: Added better reading for projects at ~300 blocks. All other updates still apply

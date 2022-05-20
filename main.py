@@ -13,7 +13,8 @@ class Voxel(Button):
             color = color.color(0, 0, random.uniform(.9, 1.0)),
             highlight_color = color.white,
         )
-        array.append((self.position[0], self.position[1], self.position[2]))
+        if (int(self.position[0]), int(self.position[1]), int(self.position[2])) not in array:
+            array.append((int(self.position[0]), int(self.position[1]), int(self.position[2])))
     def input(self, key):
         global array,HoverMode
         if self.hovered:
@@ -43,7 +44,7 @@ def input(key):
         fil = open('locations.txt', 'w')
         for el in array:
             fil.write(str(el) + "\n")
-sky = Entity(model = 'sphere', color = color.azure, double_sided = True, scale = 150)
+sky = Entity(model = 'sphere', color = color.white66, double_sided = True, scale = 1000)
 player = FirstPersonController()
-player.gravity = 1
+player.gravity = 0.1
 app.run()
